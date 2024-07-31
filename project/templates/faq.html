@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      {% load static %}
+       <style>
+          h2{
+            font-size: 3rem;
+          }
+          .account{
+            color: white;
+          }
+          .account a{
+            color: #ffffff;
+          }
+          .faqhead{
+                text-transform: uppercase;
+                font-size: 20px;
+                font-weight: 700;
+                color: #5a5959;
+          }
+      </style>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500;700&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="https://kit.fontawesome.com/4a30165663.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/rentalcar.css' %}">
+
+    <title>Carwilla</title>
+  </head>
+  <body>
+    <nav class="col  navbar navbar-expand-lg navbar-dark bg-dark home-nav">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" style="font-weight: 500;">Carwilla</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="gap: 2rem;">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'home' %}" style="color: white;">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}" style="color: white;">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'blogs' %}" style="color: white;">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact' %}" style="color: white;">Contact</a>
+                </li>
+                </ul>
+            </div>
+            <div class="account">
+                <span class="d-flex">
+                    {% if user %}
+                    <a href="{% url 'account' %}" class="d-flex text-decoration-none">
+                        <box-icon type='solid' color="#ffffff" name='user'></box-icon>
+                        <p>{{name}}</p>
+                    </a>
+                    <span class="ms-2 me-2">|</span>
+                    <a class="d-flex text-decoration-none" href="{% url 'logout' %}">
+                        <p>Logout</p>
+                    </a>
+                    {% else %}
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#LoginModal">LOGIN</button>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </nav>
+    <div class="mt-5 mb-5 container">
+        <div class="row">
+            <div class="col">
+                <div>
+                    <span class="faqhead">About Carwilla</span>
+                    <div class="mt-3 accordion" id="about">
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            What is CarWilla?
+                          </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#about">
+                          <div class="accordion-body">
+                            CarWilla is a reliable and convenient rental car service that allows you to book vehicles for
+                              your travels. Whether you need a car for a day trip or an extended journey, CarWilla offers
+                              a wide range of vehicles to suit your needs. With easy online booking and doorstep delivery
+                              and pick-up options, CarWilla makes renting a car hassle-free and enjoyable.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Are there restrictions on where I can travel?
+                          </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#about">
+                          <div class="accordion-body">
+                            At CarWilla, we provide flexible travel options with minimal restrictions. However, certain
+                              locations may have specific terms and conditions or additional fees. We recommend checking
+                              our website or contacting our customer support team for more details regarding your desired
+                              travel destinations.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Do I have to bring the car back to the same location?
+                          </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#about">
+                          <div class="accordion-body">
+                              No, you don't have to return the car to the same location with CarWilla. We offer the flexibility
+                              of drop-off at a different location, making your journey more convenient. Simply inform us of your
+                              preferred drop-off location during the booking process, and we'll ensure a seamless experience for you.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading_4">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapseThree">
+                            Do I have to bring the car back to the same location?
+                          </button>
+                        </h2>
+                        <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#about">
+                          <div class="accordion-body">
+                              No, you don't have to return the car to the same location with CarWilla. We offer the flexibility
+                              of drop-off at a different location, making your journey more convenient. Simply inform us of your
+                              preferred drop-off location during the booking process, and we'll ensure a seamless experience for you.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading_5">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapseThree">
+                            What kind of cars can I choose from?
+                          </button>
+                        </h2>
+                        <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading_5" data-bs-parent="#about">
+                          <div class="accordion-body">
+                              At CarWilla, we offer a diverse range of cars to suit your preferences and needs. Our fleet
+                              includes compact cars, sedans, SUVs, and even luxury vehicles. Whether you're traveling solo,
+                              with family, or for a special occasion, you'll find the perfect car with us. Explore our website
+                              or contact our team for more information on our available car options.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div>
+                    <span class="faqhead">Bookings </span>
+                    <div class="mt-3 accordion" id="bookings">
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="booking1">
+                          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#booking_collapse1" aria-expanded="true" aria-controls="collapseOne">
+                            How do I book a rental car?
+                          </button>
+                        </h2>
+                        <div id="booking_collapse1" class="accordion-collapse collapse show" aria-labelledby="booking1" data-bs-parent="#bookings">
+                          <div class="accordion-body">
+                            To book a rental car, visit our homepage and enter your pickup and drop-off locations, along with the desired dates. Browse through our available vehicles, select your preferred car, and complete the booking process by providing your details and payment information.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="mb-3 accordion-item">
+                        <h2 class="accordion-header" id="booking2">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#booking_collapse2" aria-expanded="false" aria-controls="collapseTwo">
+                            Are there any age restrictions for renting a car?
+                          </button>
+                        </h2>
+                        <div id="booking_collapse2" class="accordion-collapse collapse" aria-labelledby="booking2" data-bs-parent="#bookings">
+                          <div class="accordion-body">
+                            The minimum age to rent a car with CarWilla is 21 years old. Drivers aged 21 to 24 may be subject to a young driver surcharge. Some car categories may have higher age requirements. Please check the terms and conditions during the booking process for specific age-related details.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="booking3">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#booking_collapse3" aria-expanded="false" aria-controls="collapseThree">
+                            What types of cars are available for rent?
+                          </button>
+                        </h2>
+                        <div id="booking_collapse3" class="accordion-collapse collapse" aria-labelledby="booking3" data-bs-parent="#bookings">
+                          <div class="accordion-body">
+                              CarWilla offers a diverse range of vehicles to suit your needs, including compact cars, sedans, SUVs, minivans, and luxury vehicles. Whether you're looking for an economical option or a spacious ride for your family, we have the right car for you.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="booking4">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#booking_collapse4" aria-expanded="false" aria-controls="collapseThree">
+                            Are there any mileage restrictions on the rental cars?
+                          </button>
+                        </h2>
+                        <div id="booking_collapse4" class="accordion-collapse collapse" aria-labelledby="booking4" data-bs-parent="#bookings">
+                          <div class="accordion-body">
+                              Most of our rentals come with unlimited mileage, allowing you to travel as far as you need without additional charges. However, some special offers or specific vehicle categories may have mileage limits. Please check the terms and conditions of your booking for details.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="booking5">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#booking_collapse5" aria-expanded="false" aria-controls="collapseThree">
+                            How can I pay for my rental car?
+                          </button>
+                        </h2>
+                        <div id="booking_collapse5" class="accordion-collapse collapse" aria-labelledby="booking5" data-bs-parent="#bookings">
+                          <div class="accordion-body">
+                               You can pay for your rental car using a credit card or debit card. We accept major credit cards such as Visa and MasterCard. Payment is required at the time of booking, and a security deposit will be held on your card until the vehicle is returned in good condition.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="bg-dark text-white p-3" >
+      <div class="container-fluid h-100  p-3 ">
+        <div class=" text-center">
+          <div class="col pt-4 mb-3  socialicons ">
+            <a href="https://www.facebook.com/CarWilla"><i class="bi bi-facebook"></i></a>
+            <a href="https://x.com/CarWilla"><i class="bi bi-twitter"></i></a>
+            <a href="https://www.instagram.com/CarWilla"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.google.com/CarWilla"><i class="bi bi-google"></i></a>
+            <a href="https://wa.me/"><i class="bi bi-whatsapp"></i></a>
+          </div>
+          <div class="col mb-4 footernav">
+            <ul class="list-unstyled">
+              <li class="me-2"><a href="{% url 'home' %}">Home</a></li>
+              <li class="me-2"><a href="{% url 'about' %}">About</a></li>
+              <li class="me-2"><a href="{% url 'faq' %}">FAQ</a></li>
+              <li class="me-2"><a href="{% url 'contact' %}">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="pt-3 footerbottom text-center">
+          <p><span class="designer">Carwilla</span> || All rights reserved</p>
+        </div>
+      </div>
+</footer>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
